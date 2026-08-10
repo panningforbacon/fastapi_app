@@ -1,0 +1,58 @@
+[project]
+name = "fastapi-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Steve", email = "panningforbacon@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+fastapi-app = "fastapi_app:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.411",
+    "pytest>=9.1.1",
+    "ruff>=0.16.2",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.pyright]
+typeCheckingMode = "basic"  # "off", "basic", "standard", "strict"include = ["src"]
+pythonVersion = "3.12"
+pythonPlatform = "All"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+python_files = ["test_*.py"]
+python_classes = ["Test*", "*Tests"]
+python_functions = ["test_*"]
+
+# Show shorter tracebacks by default
+filterwarnings = [
+  "error",
+  "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 80

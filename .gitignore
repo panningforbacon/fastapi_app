@@ -1,0 +1,29 @@
+# OS files
+.DS_Store
+Thumb.db
+
+# Python
+__pycache__/     # directories (to contain .pyc files)
+.python_history # interactive session history
+
+# uv
+uv.lock
+
+# venv
+.venv/
+
+# ruff
+.ruff_cache/
+
+# pyright
+.pyright/
+
+# pytest
+.pytest_cache/
+.cache/
+
+# pytest-cov
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml

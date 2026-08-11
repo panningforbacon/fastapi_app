@@ -4,6 +4,7 @@ from app.__version__ import __version__
 from app.config import Settings, get_settings
 from app.error_handlers import register_error_handlers
 from app.lifespan import lifespan
+from app.middleware import register_middleware
 from app.routers import health
 
 
@@ -19,6 +20,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app.state.settings = settings
 
+    register_middleware(app)
     register_error_handlers(app)
 
     @app.get("/")

@@ -7,19 +7,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        extra="ignore",
-    )
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    env: Literal["local", "dev", "test", "prod"] = "local"
-
+    environment: Literal["local", "dev", "test", "prod"] = "local"
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
-
-    api_key: SecretStr = Field(
-        default=SecretStr("default_api_key"),
-    )
-
+    api_key: SecretStr = Field(default=SecretStr("default_api_key"))
     app_name: str = "My API"
 
     @property

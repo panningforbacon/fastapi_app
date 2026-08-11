@@ -7,7 +7,9 @@ authors = [
     { name = "Steve", email = "panningforbacon@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "fastapi[uvicorn]>=0.141.1",
+]
 
 [project.scripts]
 fastapi-app = "fastapi_app:main"
@@ -18,6 +20,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.10.0",
     "pyright>=1.1.411",
     "pytest>=9.1.1",
     "ruff>=0.16.2",
@@ -29,6 +32,9 @@ target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "W", "F", "I", "B", "UP"]
+
+[tool.ruff.format]
+skip-magic-trailing-comma = false
 
 [tool.pyright]
 typeCheckingMode = "basic"  # "off", "basic", "standard", "strict"include = ["src"]

@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 
-from .__version__ import __version__
+from __version__ import __version__
 
-app = FastAPI(title="Hello API", description="A minimal FastAPI service.", version=__version__)
+app = FastAPI(
+    title="Hello API",
+    description="A minimal FastAPI service.",
+    version=__version__,
+)
 
 
 @app.get("/")

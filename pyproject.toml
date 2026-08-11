@@ -11,19 +11,14 @@ dependencies = [
     "fastapi[uvicorn]>=0.141.1",
 ]
 
-[project.scripts]
-fastapi-app = "fastapi_app:main"
-
-[build-system]
-requires = ["uv_build>=0.12.3,<0.13.0"]
-build-backend = "uv_build"
+[tool.uv]
+package = false
 
 [dependency-groups]
 dev = [
     "httpx2>=2.10.0",
     "pyright>=1.1.411",
     "pytest>=9.1.1",
-    "pytest-cov>=7.1.0",
     "ruff>=0.16.2",
 ]
 
@@ -43,13 +38,12 @@ pythonVersion = "3.12"
 pythonPlatform = "All"
 
 [tool.pytest.ini_options]
+pythonpath = ["."]
 testpaths = ["tests"]
 
 python_files = ["test_*.py"]
 python_classes = ["Test*", "*Tests"]
 python_functions = ["test_*"]
-
-addopts = "-ra -q --cov --cov-report=term-missing"
 
 # Show shorter tracebacks by default
 filterwarnings = [

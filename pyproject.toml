@@ -23,6 +23,7 @@ dev = [
     "httpx2>=2.10.0",
     "pyright>=1.1.411",
     "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
     "ruff>=0.16.2",
 ]
 
@@ -47,6 +48,8 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*", "*Tests"]
 python_functions = ["test_*"]
+
+addopts = "-ra -q --cov --cov-report=term-missing"
 
 # Show shorter tracebacks by default
 filterwarnings = [

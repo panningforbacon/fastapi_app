@@ -3,7 +3,10 @@
 Thumb.db
 
 # Python
-__pycache__/     # directories (to contain .pyc files)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .python_history # interactive session history
 
 # uv

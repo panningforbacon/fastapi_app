@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 def register_error_handlers(app: FastAPI) -> None:
+
     @app.exception_handler(AppError)
     async def handle_app_error(request: Request, exc: AppError) -> JSONResponse:
         return JSONResponse(
@@ -22,4 +23,12 @@ def register_error_handlers(app: FastAPI) -> None:
         return JSONResponse(
             status_code=422,
             content={"error": {"code": "invalid_request", "details": exc.errors()}},
+        )
+
+    @app.exception_handler(Exception)
+    async def handle_unexpected(request: Request, exc: Exception) -> JSONResponse:
+        logger.exception(f"Unhandled error on {request.method} {request.url.path}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": {"code": "internal_error", "message": "Unexpected error."}},
         )

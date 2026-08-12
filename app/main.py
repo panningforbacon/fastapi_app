@@ -23,10 +23,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     register_middleware(app)
     register_error_handlers(app)
 
-    @app.get("/")
-    async def read_root() -> dict[str, str]:
-        return {"message": "Hello world!"}
-
     app.include_router(root.router)
     app.include_router(health.router, tags=["ops"])
 

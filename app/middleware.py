@@ -14,5 +14,5 @@ def register_middleware(app: FastAPI) -> None:
             response = await call_next(request)
         finally:
             request_id_var.reset(token)
-        response.headers["X-Request_ID"] = request_id
+        response.headers["X-Request-ID"] = request_id
         return response
